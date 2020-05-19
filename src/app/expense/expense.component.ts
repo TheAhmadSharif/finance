@@ -259,7 +259,7 @@ removeObject(object:any) {
 
 
 
-         this.firestore.collection("Tally").doc(id).delete().then(result => {
+         this.firestore.collection("PersonalTally").doc(id).delete().then(result => {
               console.log("Document successfully deleted!");
 
 

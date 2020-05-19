@@ -193,7 +193,7 @@ addDeposit(deposit:any) {
 
       });
 
-      this.firestore.collection('PersonalFinanceSummary').doc('total_deposit').set({
+      this.firestore.collection('PersonalTallySummary').doc('total_deposit').set({
         deposit_aggregate: {
           amount: depositAmount,
           last_deposit_type: deposit_category,
@@ -326,7 +326,7 @@ removeObject(object:any) {
               console.log("Document successfully deleted!");
 
 
-              this.firestore.collection('PersonalFinanceSummary').doc('total_deposit').set({
+              this.firestore.collection('PersonalTallySummary').doc('total_deposit').set({
               deposit_aggregate: {
                   amount: depositAmount,
                   datetime_ms: d,
