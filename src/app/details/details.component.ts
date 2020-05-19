@@ -29,7 +29,7 @@ export class DetailsComponent implements OnInit {
 
   ngOnInit(): void {
           var objectId = this.routeParameter.objectId; 
-          this.firestore.collection('Tally').doc(objectId).valueChanges().subscribe(object=> {
+          this.firestore.collection('PersonalTally').doc(objectId).valueChanges().subscribe(object=> {
             this.object = object;
         }, error => {
 

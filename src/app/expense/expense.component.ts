@@ -119,7 +119,7 @@ export class ExpenseComponent implements OnInit {
   ngOnInit(): void {
 
     this.totalExpense = 0;
-    this.firestore.collection('Tally', ref => ref.orderBy('expense.datetime')).valueChanges().subscribe(object=> {
+    this.firestore.collection('PersonalTally', ref => ref.orderBy('expense.datetime')).valueChanges().subscribe(object=> {
         this.expenses = object;
     }, error => {
 
@@ -179,7 +179,7 @@ addExpense(expense:any) {
     } 
 
     if(expense.amount > 0 && expense.category.length > 1) {
-      this.firestore.collection('Tally').doc(d).set({
+      this.firestore.collection('PersonalTally').doc(d).set({
           expense: {
             id: datetime,
             amount: expense.amount,
@@ -195,7 +195,7 @@ addExpense(expense:any) {
 
       });
       
-      this.firestore.collection('TallySummary').doc('total_expense').set({
+      this.firestore.collection('PersonalTallySummary').doc('total_expense').set({
               expense_aggregate: {
                   amount: expenseAmount,
                   datetime_ms: d,
@@ -263,7 +263,7 @@ removeObject(object:any) {
               console.log("Document successfully deleted!");
 
 
-              this.firestore.collection('TallySummary').doc('total_expense').set({
+              this.firestore.collection('PersonalTallySummary').doc('total_expense').set({
               expense_aggregate: {
                   amount: expenseAmount,
                   datetime_ms: d,
@@ -306,7 +306,7 @@ getSubCategory(subcategory:string) {
 getByDay(date:any) {
   this.totalExpense = 0;
   var givendate = date.year + '-' + date.month + '-' + date.day;  
-  this.firestore.collection('Tally', ref => ref.where('expense.userdate', '==', givendate)).valueChanges().subscribe(object=> {
+  this.firestore.collection('PersonalTally', ref => ref.where('expense.userdate', '==', givendate)).valueChanges().subscribe(object=> {
         this.expenses = object; 
         this.expenses.forEach((element:any) => {
           this.totalExpense = parseInt(element.expense.amount) + this.totalExpense;
@@ -351,7 +351,7 @@ getByRange(range:any) {
 
       if(prevdate_ms < nextdate_ms) {
           this.totalExpense = 0;
-          this.firestore.collection('Tally', ref => ref.where('expense.userdate_ms', '>=', prevdate_ms).where('expense.userdate_ms', '<=', nextdate_ms)).valueChanges().subscribe(object=> {
+          this.firestore.collection('PersonalTally', ref => ref.where('expense.userdate_ms', '>=', prevdate_ms).where('expense.userdate_ms', '<=', nextdate_ms)).valueChanges().subscribe(object=> {
             this.expenses = object;
             this.expenses.forEach((element:any) => {
             this.totalExpense = element.expense.amount + this.totalExpense;

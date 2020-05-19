@@ -101,7 +101,7 @@ export class DepositComponent implements OnInit {
   }
 ngOnInit(): void {
     this.totalDeposit = 0;
-    this.firestore.collection('Tally', ref => ref.orderBy('deposit.datetime')).valueChanges().subscribe(object=> {
+    this.firestore.collection('PersonalTally', ref => ref.orderBy('deposit.datetime')).valueChanges().subscribe(object=> {
       this.deposits = object;
     });
     this.getTotalDeposit();
@@ -179,7 +179,7 @@ addDeposit(deposit:any) {
 
 
     if(deposit.amount > 0 && deposit.category.length > 1) {
-      this.firestore.collection('Tally').doc(d).set({
+      this.firestore.collection('PersonalTally').doc(d).set({
           deposit: {
             id: datetime,
             amount: deposit.amount,
@@ -193,7 +193,7 @@ addDeposit(deposit:any) {
 
       });
 
-      this.firestore.collection('TallySummary').doc('total_deposit').set({
+      this.firestore.collection('PersonalFinanceSummary').doc('total_deposit').set({
         deposit_aggregate: {
           amount: depositAmount,
           last_deposit_type: deposit_category,
@@ -219,7 +219,7 @@ getCategory(category:string) {
 getByDay(date:any) {
   this.totalDeposit = 0;
   var givendate = date.year + '-' + date.month + '-' + date.day;  
-  this.firestore.collection('Tally', ref => ref.where('deposit.userdate', '==', givendate)).valueChanges().subscribe(object=> {
+  this.firestore.collection('PersonalTally', ref => ref.where('deposit.userdate', '==', givendate)).valueChanges().subscribe(object=> {
         this.deposits = object; 
         this.deposits.forEach(element => {
           this.totalDeposit = parseInt(element.deposit.amount) + this.totalDeposit;
@@ -268,7 +268,7 @@ getByRange(range:any) {
 
       if(prevdate_ms < nextdate_ms) {
           this.totalDeposit = 0;
-          this.firestore.collection('Tally', ref => ref.where('deposit.userdate_ms', '>=', prevdate_ms).where('deposit.userdate_ms', '<=', nextdate_ms)).valueChanges().subscribe(object=> {
+          this.firestore.collection('PersonalTally', ref => ref.where('deposit.userdate_ms', '>=', prevdate_ms).where('deposit.userdate_ms', '<=', nextdate_ms)).valueChanges().subscribe(object=> {
             console.log(object, 'object');
             this.deposits = object;
             this.deposits.forEach(element => {
@@ -322,11 +322,11 @@ removeObject(object:any) {
 
 
 
-         this.firestore.collection("Tally").doc(id).delete().then(result => {
+         this.firestore.collection("PersonalTally").doc(id).delete().then(result => {
               console.log("Document successfully deleted!");
 
 
-              this.firestore.collection('TallySummary').doc('total_deposit').set({
+              this.firestore.collection('PersonalFinanceSummary').doc('total_deposit').set({
               deposit_aggregate: {
                   amount: depositAmount,
                   datetime_ms: d,
