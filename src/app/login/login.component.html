@@ -1,13 +1,8 @@
-<div class="h-100" style="margin-top: 100px;">
+<div style="margin-top: 100px;">
     <div class="d-flex justify-content-center">
-       <div class="card">
-           <div class="card-body">
-            
-            <ngb-tabset #t="ngbTabset">
-              <ngb-tab title="Signin" id="signinTab">
-                <ng-template ngbTabContent>
-                  <div style="width: 360px;">
-                      <div class="card-body">
+              <div class="card login-div">
+                   <div class="card-body">
+                          <span class="h5 my-2 d-block">Signin</span>
                           <form>
                           
                               <div class="form-group">
@@ -18,20 +13,14 @@
                               <div class="form-group">
                               <input type="password" class="form-control" placeholder="Password" #password>
                               </div> <!-- End -->
-                  
-                  
+
+
                               <div class="d-flex justify-content-between">
                               <div class="align-self-start">
                                   <button type="submit" class="btn btn-sm btn-success" (click)="doDogin(email.value, password.value)">Signin</button>
                               </div>  <!-- End -->
-                  
-                              <span class="mt-2">
-                                  <span class="p-2 text-muted-custom"><small>Does not have any account ? <span class="cp" (click)="t.select('signupTab')" style="color: #666">Signup</span></small></span>
-                  
-                                  <div class="d-flex justify-content-end mt-2 f-link">
-                                      <li class="text-muted-custom"><small><a routerLink="/contact">&#9679; Need help</a></small></li>
-                                  </div>
-                              </span>
+
+                              
                               </div> <!-- End div -->
                           </form>
 
@@ -40,14 +29,7 @@
                                   <span>{{ notification }}</span>
                             </div> <!-- End alert -->
                           </div> <!-- End notification-->
-                      </div> <!-- End Card Body -->
-                  </div>   <!-- end div -->
-                 
-                </ng-template>
-              </ngb-tab>
-             
-            </ngb-tabset>
-           </div>   <!-- End card body -->
-       </div>   <!-- End card -->
+                   </div>   <!-- End card body -->
+                  </div>   <!-- End card -->
   </div>  <!-- End flex -->
 </div> <!-- End div -->
