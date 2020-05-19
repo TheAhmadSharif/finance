@@ -1,3 +1,4 @@
 ng build --prod --output-path docs --base-href https://theahmadsharif.github.io/finance/
+ng build --prod --output-path docs --base-href https://theahmadsharif.github.io/finance/
 
 git remote set-url origin git@github.com:TheAhmadSharif/finance.git
