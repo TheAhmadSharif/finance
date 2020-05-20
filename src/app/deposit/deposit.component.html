@@ -159,7 +159,7 @@
                       <td>Action</td>
                     </tr>
       
-                    <tr *ngFor="let object of deposits | paginate: { itemsPerPage: 4, currentPage: p }; let i = index;">
+                    <tr *ngFor="let object of deposits | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
                       <td> {{ i + 1 }} </td>
                       
                       <td> <a routerLink="/dashboard/{{object.deposit.transaction_type}}/{{ object.deposit.category.split(' ')[0]  + '/' + object.deposit.datetime }}"><span class="span_amount">{{ object.deposit.amount | number }}</span> </a> TK</td>

@@ -39,6 +39,7 @@
                       <option value="Utility">Utility</option>
                       <option value="LifeStyle">LifeStyle</option>
                       <option value="LifeStyle">Gift</option>
+                      <option value="Study">Study or Education</option>
                       <option value="Loan">Loan Payment</option>
                       <option value="Others">Others</option>
                   </select>    
@@ -163,7 +164,7 @@
                       <td>Action</td>
                     </tr>
       
-                    <tr *ngFor="let object of expenses | paginate: { itemsPerPage: 20, currentPage: p }; let i = index;">
+                    <tr *ngFor="let object of expenses | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
                       <td> {{ i + 1 }} </td>
                       <td> <a routerLink="/dashboard/{{object.expense.transaction_type}}/{{ object.expense.category.split(' ')[0]  + '/' + object.expense.datetime }}"> <span class="span_amount">{{ object.expense.amount | number}}</span></a> TK</td>
 
