@@ -1,1 +1,50 @@
-<p>activity works!</p>
+<div class="row">
+    <div class="col-sm-12 col-12" style="margin-bottom: 20px;"> 
+      <div class="card">
+          <div class="card-body">
+
+            <div (click)="activityCollapse = !activityCollapse" [attr.aria-expanded]="!activityCollapse" aria-controls="activityDiv" style="cursor: pointer;">
+              <i class="bars icon d-inline-block"></i> <span class="h5 d-inline-block">  Add Activity </span>
+          </div>  <!-- End Title Div -->
+
+
+
+            <div class="divider"></div>
+            <div id="activityDiv" [ngbCollapse]="activityCollapse" style="margin-top: 20px;">
+      
+                    <div *ngIf="notification" class="alert alert-warning">
+                        {{ notification }}
+                    </div> <!-- End Alert -->
+      
+      
+                          
+                  <div class="form-group">
+                    <div class="input-group">
+
+                      <input type="hidden" 
+                            ngbDatepicker #activityDate="ngbDatepicker" [(ngModel)]="activity.date">
+
+                    <input class="form-control" 
+                            ngbDatepicker #activityDate="ngbDatepicker" (click)="activityDate.toggle()" [value]="activity.date.year + '-' + activity.date.month + '-' + activity.date.day | date: 'dd, MMM y'" readonly>
+
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary disabled calendar" (click)="activityDate.toggle()" style="padding: 0 5px;"><span class="calendar-icon"></span>
+                          </button>
+                      </div>
+                    </div> <!-- End input group -->
+                  </div> <!-- End form group -->
+  
+  
+      
+              <div class="form-group">  
+                <input type="text" placeholder="Activity note" class="form-control mb-2" [(ngModel)]="activity.note">
+             </div> <!-- End form-group-->
+      
+              <div class="form-group mb-0">
+                <button class="btn btn-sm btn-success" (click)="addActivity(activity)">Add Activity</button>
+              </div>  <!-- End form-group-->
+            </div> <!-- End  Deposit Block -->
+        </div> <!-- End card body -->
+        </div> <!-- End card  -->
+      </div> <!-- End col 6 -->
+</div> <!-- End row -->
