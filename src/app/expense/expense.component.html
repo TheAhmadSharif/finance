@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body">
           <div (click)="expenseCollapse = !expenseCollapse" [attr.aria-expanded]="!expenseCollapse" aria-controls="addExpenseBlock" style="cursor: pointer;">
-              <i class="bars icon d-inline-block"></i> <h5 class="h5 d-inline-block">  Add Expense </h5>
+              <i class="bars icon d-inline-block"></i> <span class="h6 d-inline-block">  Add Expense </span>
           </div>  <!-- End Title Div -->
 
 
@@ -15,11 +15,12 @@
           </div> <!-- End Alert -->
                 <div class="form-group">
                   <div class="input-group">
-                    <input class="form-control" placeholder="yyyy/mm/dd"
-                            ngbDatepicker #expenseDate="ngbDatepicker" (click)="expenseDate.toggle()" [(ngModel)]="expense.date">
-                    <div class="input-group-append">
-                      
+                    <input type="hidden" 
+                            ngbDatepicker #expenseDate="ngbDatepicker" [(ngModel)]="expense.date">
 
+                    <input class="form-control" 
+                            ngbDatepicker #expenseDate="ngbDatepicker" (click)="expenseDate.toggle()" [value]="expense.date.year + '-' + expense.date.month + '-' + expense.date.day | date: 'dd, MMM y'">
+                    <div class="input-group-append">
                         <button class="btn btn-outline-secondary disabled calendar" (click)="expenseDate.toggle()" style="padding: 0 5px;"><span class="calendar-icon"></span>
                           </button>
                     </div>
@@ -31,7 +32,7 @@
                 <div class="form-group">
                   <input type="hidden" [(ngModel)]="expense.category">
                   <select name="expense_type" class="custom-select" #category (click)="getCategory(category.value)">
-                      <option selected="true" disabled value="0">Select Bill Type </option>
+                      <option selected="true" disabled value="0">Select Expense Type </option>
                       <option value="Foods">Foods</option>
                       <option value="Transport">Transport </option>
                       <option value="Cloths">Shopping</option>

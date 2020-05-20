@@ -9,10 +9,12 @@ import 'firebase/firestore';
 
 interface Expense {
   amount: string,
-  date: object,
+  date: {
+    year: any,
+    month: any,
+    day: any,
+  },
   category: string,
-  subcategory: string,
-  subcategory_others: string,
   note: string
 }
 interface TallySummary {
@@ -63,8 +65,6 @@ export class ExpenseComponent implements OnInit {
   expenses:any;
   totalExpense:any = 0;
   notification:any;
-  subcategory:string;
-  sub_others:boolean = false;
   selected_day:any = {
     year: new Date().getFullYear(), 
     month: new Date().getMonth() + 1, 
@@ -91,8 +91,6 @@ export class ExpenseComponent implements OnInit {
     amount: '',
     date: {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()},
     category: '',
-    subcategory: '',
-    subcategory_others: '',
     note: '',
   }
   
@@ -157,6 +155,7 @@ addExpense(expense:any) {
     var expenseAmount = parseInt(expense.amount) + parseInt(this.totalExpense); 
     var datetime_hr = new Date(datetime).toUTCString();
     var expense_byCategoryObject = this.tallySummary.expense_byCategory;
+    
     if(expense_byCategoryObject[expense_category] && expense_byCategoryObject[expense_category].amount) {
         var last_category_amount = parseInt(expense_byCategoryObject[expense_category].amount);
         var new_category_amount = last_category_amount + parseInt(expense.amount);
@@ -184,8 +183,6 @@ addExpense(expense:any) {
             id: datetime,
             amount: expense.amount,
             category: expense.category,
-            subcategory: expense.subcategory,
-            subcategory_others: expense.subcategory_others,
             transaction_type: "expense",
             datetime: datetime,
             userdate: userdate,
@@ -294,15 +291,7 @@ removeObject(object:any) {
 getCategory(category:string) {
     this.expense.category = category;
 }
-getSubCategory(subcategory:string) {
-  this.expense.subcategory = subcategory;
-  if(subcategory=== 'Others'){
-      this.sub_others = true;
-  }
-  else {
-    this.sub_others = false;
-  }
-}
+
 getByDay(date:any) {
   this.totalExpense = 0;
   var givendate = date.year + '-' + date.month + '-' + date.day;  

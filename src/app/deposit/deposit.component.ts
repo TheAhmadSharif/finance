@@ -8,7 +8,11 @@ import 'firebase/firestore';
 
 interface Deposit {
   amount: string,
-  date: object,
+  date: {
+    year: any,
+    month: any,
+    day: any,
+  },
   category: string,
   note: string
 }

@@ -4,7 +4,7 @@
           <div class="card-body">
 
             <div (click)="depositCollapse = !depositCollapse" [attr.aria-expanded]="!depositCollapse" aria-controls="addDepositBlock" style="cursor: pointer;">
-              <i class="bars icon d-inline-block"></i> <h5 class="h5 d-inline-block">  Add Deposit </h5>
+              <i class="bars icon d-inline-block"></i> <span class="h5 d-inline-block">  Add Deposit </span>
           </div>  <!-- End Title Div -->
 
 
@@ -20,8 +20,13 @@
                           
                   <div class="form-group">
                     <div class="input-group">
-                      <input class="form-control" placeholder="yyyy/Fmm/dd"
-                              ngbDatepicker #depositDate="ngbDatepicker" (click)="depositDate.toggle()" [(ngModel)]="deposit.date">
+
+                      <input type="hidden" 
+                            ngbDatepicker #depositDate="ngbDatepicker" [(ngModel)]="deposit.date">
+
+                    <input class="form-control" 
+                            ngbDatepicker #depositDate="ngbDatepicker" (click)="depositDate.toggle()" [value]="deposit.date.year + '-' + deposit.date.month + '-' + deposit.date.day | date: 'dd, MMM y'">
+
                       <div class="input-group-append">
                         <button class="btn btn-outline-secondary disabled calendar" (click)="depositDate.toggle()" style="padding: 0 5px;"><span class="calendar-icon"></span>
                           </button>

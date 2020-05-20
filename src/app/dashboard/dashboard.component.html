@@ -24,6 +24,13 @@
                         <span class="cp" (click)="switchCalculator()"
                         [attr.aria-expanded]="!isCollapsed" aria-controls="calculator" style="color: #666">Calculator</span>
                     </li>
+
+                    <li>
+                        <i class="tasks icon" style="color: #6c757d;"></i>
+                        <a routerLink="/dashboard/activity" routerLinkActive="active">Activity</a>
+                    </li>
+
+                    
                     <li>
                         <i class="chart bar icon" style="color: #6c757d;"></i> 
                         <a routerLink="/dashboard/report" routerLinkActive="active">Report</a>

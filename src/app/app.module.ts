@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NopageComponent } from './nopage/nopage.component';
 import { ContactComponent } from './contact/contact.component';
+import { ActivityComponent } from './activity/activity.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ContactComponent } from './contact/contact.component';
     LoginComponent,
     DashboardComponent,
     NopageComponent,
-    ContactComponent
+    ContactComponent,
+    ActivityComponent
   ],
   imports: [
     BrowserModule,
