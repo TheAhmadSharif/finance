@@ -4,10 +4,8 @@
           <div class="card-body">
 
             <div (click)="activityCollapse = !activityCollapse" [attr.aria-expanded]="!activityCollapse" aria-controls="activityDiv" style="cursor: pointer;">
-              <i class="bars icon d-inline-block"></i> <span class="h5 d-inline-block">  Add Activity </span>
+              <i class="plus square outline icon d-inline-block"></i> <span class="h5 d-inline-block">  Add Activity </span>
           </div>  <!-- End Title Div -->
-
-
 
             <div class="divider"></div>
             <div id="activityDiv" [ngbCollapse]="activityCollapse" style="margin-top: 20px;">
@@ -36,8 +34,24 @@
   
   
       
-              <div class="form-group">  
-                <input type="text" placeholder="Activity note" class="form-control mb-2" [(ngModel)]="activity.note">
+              <div class="form-group">
+               
+                 <div class="input-group">
+
+                        <input type="text" (keydown.enter)="listActivity(listObject.value)" class="form-control" placeholder="Add Activity and press Enter" [(ngModel)]="activity.list" name="activity.list" #listObject>
+
+                      <div class="input-group-append">
+                          <button class="btn btn-sm btn-outline-secondary" (click)="listActivity(listObject.value)">
+                             <i class="plus icon"></i>
+                          </button>
+                      </div>  <!-- End -->
+                </div> <!-- End input group -->
+                <div class="d-block mt-3">
+                      <pre class="eventList">{{ event | json }}</pre>
+                </div> <!-- End block -->
+
+
+               
              </div> <!-- End form-group-->
       
               <div class="form-group mb-0">

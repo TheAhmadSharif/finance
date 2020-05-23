@@ -10427,3 +10427,6 @@ ul,ol,li {
     text-align: right;
     display: inline-block;
 }
+.eventList {
+  font-size: 1rem;
+}
