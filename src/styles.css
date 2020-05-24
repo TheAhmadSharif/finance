@@ -1,4 +1,6 @@
 @import 'icon.css';
+@import 'list.css';
+@import 'popup.css';
 
 @font-face {
   font-family: 'jostLight';
@@ -10429,4 +10431,8 @@ ul,ol,li {
 }
 .eventList {
   font-size: 1rem;
+}
+
+pre {
+  font-size: 1.1rem;
 }

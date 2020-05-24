@@ -62,3 +62,44 @@
         </div> <!-- End card  -->
       </div> <!-- End col 6 -->
 </div> <!-- End row -->
+
+<div *ngIf="activityList" class="row mb-4">
+  <div *ngFor="let object of activityList | paginate: { itemsPerPage: 4, currentPage: p }; let i = index;" class="col-sm-3 col-12">
+    <div class="card">
+      <div class="card-body">
+        <span placement="top" ngbTooltip="Delete" (click)="removeObject(object)"> <i class="trash alternate outline icon cp"></i> </span>
+           <div>
+             {{ object.AD_toDateString }}
+           </div>
+          <div class="ui celled list">
+            <div class="item" *ngFor="let o of object.activity_list" class="item">
+              <div class="content">
+                  {{ o }}
+              </div>  <!-- End content -->
+            </div>   <!-- End item --> 
+          </div>   <!-- End UI Celled List -->
+
+      </div> <!-- End card body -->
+    </div>  <!-- End card  -->
+  </div> <!-- End col 12 -->
+</div>  <!-- End row -->
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+        <div class="card-body">
+              <div class="d-flex justify-content-end">
+                  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>    <!-- End d -flex -->
+
+              <div class="ui button">Show flowing popup</div>
+              <div class="ui icon button" data-tooltip="Add users to your feed">
+                <i class="add icon"></i>
+              </div>
+              <div class="ui icon button" data-tooltip="Add users to your feed" data-inverted="">
+                <i class="add icon"></i>
+              </div>
+        </div>  <!-- End card body -->
+    </div>  <!-- Enc card -->
+  </div>  <!-- End col 12 -->
+</div>  <!-- End row -->

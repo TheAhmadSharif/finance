@@ -10,7 +10,8 @@ interface Activity {
     month: any,
     day: any,
   },
-  list: string[]
+  list: string[],
+  visibility: string
 }
 
 @Component({
@@ -22,31 +23,42 @@ export class ActivityComponent implements OnInit {
   activityCollapse:boolean = false;
   notification:any = null;
   event:any = [];
+  activityList: any;
+  p: number = 1;
 
   activity:Activity = {
     date: {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()},
-    list: []
+    list: [],
+    visibility: 'Yes'
   }
 
   constructor(private firestore: AngularFirestore) { 
   }
 
   ngOnInit(): void {
+       this.firestore.collection('PersonalActivity').valueChanges().subscribe(object=> {
+         this.activityList = object;
+         console.log(object, '40');
+    }, error => {
+
+    });
   }
 
   addActivity(activity) {
 
-      var datetime = new Date().getTime();
-      var d = datetime.toString(); 
+      var date_ISO = this.activity.date.year + '-' + this.activity.date.month + '-' + this.activity.date.day;
+      var creation_time = new Date().getTime().toString();
+      var AD_toDateString = new Date(date_ISO).toDateString();
+      var activityList = this.activity.list = this.event; 
+      var visibility = this.activity.visibility;
 
-      this.firestore.collection('Activity').doc(d).set({
-  
-            _id: datetime,
-            activity_date: activity.date,
-            activity_list: this.event,
-            note: activity.note,
-
-
+      // throw new Error("Hi");
+      this.firestore.collection('PersonalActivity').doc(creation_time).set({
+            _id: creation_time,
+            activity_date: date_ISO,
+            AD_toDateString: AD_toDateString,
+            activity_list: activityList,
+            visibility: visibility
       });
   }
   listActivity(object) {
@@ -54,5 +66,8 @@ export class ActivityComponent implements OnInit {
     this.activity.list = [];
     console.log(this.event);
   }
+ removeObject(object) {
+
+ }
 
 }
