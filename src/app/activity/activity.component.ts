@@ -66,8 +66,18 @@ export class ActivityComponent implements OnInit {
     this.activity.list = [];
     console.log(this.event);
   }
- removeObject(object) {
-
- }
+removeObject(id:any) {
+   var id = id.toString();
+   throw new Error("Hi");
+   var r = confirm("Are you sure you want to delete this activity?");
+     if (r == true) {
+         this.firestore.collection("PersonalActivity").doc(id).delete().then(result => {
+                console.log("Activity successfully deleted!");
+                
+            }).catch(function(error) {
+                console.error("Error removing document: ", error);
+            });
+     }
+  }
 
 }

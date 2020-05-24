@@ -67,7 +67,7 @@
   <div *ngFor="let object of activityList | paginate: { itemsPerPage: 4, currentPage: p }; let i = index;" class="col-sm-3 col-12">
     <div class="card">
       <div class="card-body">
-        <span placement="top" ngbTooltip="Delete" (click)="removeObject(object)"> <i class="trash alternate outline icon cp"></i> </span>
+        <span placement="top" ngbTooltip="Delete" (click)="removeObject(object._id)"> <i class="trash alternate outline icon cp"></i> </span>
            <div>
              {{ object.AD_toDateString }}
            </div>
@@ -93,12 +93,7 @@
               </div>    <!-- End d -flex -->
 
               <div class="ui button">Show flowing popup</div>
-              <div class="ui icon button" data-tooltip="Add users to your feed">
-                <i class="add icon"></i>
-              </div>
-              <div class="ui icon button" data-tooltip="Add users to your feed" data-inverted="">
-                <i class="add icon"></i>
-              </div>
+              
         </div>  <!-- End card body -->
     </div>  <!-- Enc card -->
   </div>  <!-- End col 12 -->
