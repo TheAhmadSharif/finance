@@ -20,7 +20,7 @@ interface Activity {
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
-  activityCollapse:boolean = false;
+  activityCollapse:boolean = true;
   notification:any = null;
   event:any = [];
   activityList: any;
@@ -38,7 +38,6 @@ export class ActivityComponent implements OnInit {
   ngOnInit(): void {
        this.firestore.collection('PersonalActivity').valueChanges().subscribe(object=> {
          this.activityList = object;
-         console.log(object, '40');
     }, error => {
 
     });
@@ -68,7 +67,6 @@ export class ActivityComponent implements OnInit {
   }
 removeObject(id:any) {
    var id = id.toString();
-   throw new Error("Hi");
    var r = confirm("Are you sure you want to delete this activity?");
      if (r == true) {
          this.firestore.collection("PersonalActivity").doc(id).delete().then(result => {

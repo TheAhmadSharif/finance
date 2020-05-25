@@ -1,6 +1,5 @@
 @import 'icon.css';
-@import 'list.css';
-@import 'popup.css';
+@import 'semantic.css';
 
 @font-face {
   font-family: 'jostLight';
@@ -10435,4 +10434,14 @@ ul,ol,li {
 
 pre {
   font-size: 1.1rem;
+}
+.f-16 {
+  font-size: 16px !important;
+}
+.f-20 {
+  font-size: 20px !important;
+}
+.remove-span {
+    cursor: pointer;
+    display: inline-block;
 }
