@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-sm-12 col-12" style="margin-bottom: 20px;"> 
+<div class="row" style="margin-bottom: 10px;">
+    <div class="col-sm-12 col-12"> 
       <div class="card">
           <div class="card-body">
 
@@ -64,8 +64,23 @@
       </div> <!-- End col 6 -->
 </div> <!-- End row -->
 
+<div class="row">
+  <div class="col-sm-12">
+        <div class="d-flex justify-content-end">
+              <select [(ngModel)]="objectPerPage" (click)="getPerPage(objectPerPage)">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="5" selected>5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+              </select>
+        </div> <!-- End D Flex -->
+  </div>  <!-- End col 6 -->
+</div> <!-- End row -->
+
 <div *ngIf="activityList" class="row mb-4">
-  <div *ngFor="let object of activityList | paginate: { itemsPerPage: 4, currentPage: p }; let i = index;" class="col-sm-3 col-12">
+  <div *ngFor="let object of activityList | paginate: { itemsPerPage: objectPerPage, currentPage: p }; let i = index;" class="col-sm-3 col-12">
     <div class="card">
       <div class="card-body">
           <div class="d-flex justify-content-between">
@@ -73,7 +88,7 @@
                Date: {{ object.AD_toDateString }}
              </div>  <!-- End Date -->
              <span class="remove-span" data-tooltip="Remove Activity" data-position="top center" data-variation="mini">
-                 <i class="window close outline icon cp" (click)="removeObject(object._id)"></i> 
+                 <i class="window close outline icon cp m-0" (click)="removeObject(object._id)"></i> 
               </span>  <!-- End UI Button -->
 
           </div> <!-- End d-flex -->

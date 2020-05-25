@@ -153,6 +153,15 @@
                 </div>  <!-- End row -->
 
               <div *ngIf="expenses">
+                  <div class="d-flex justify-content-end">
+                        <select [(ngModel)]="objectPerPage" (click)="getPerPage(objectPerPage)">
+                            <option value="2">2</option>
+                            <option value="5" selected>5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                  </div> <!-- End D Flex -->
                 <div class = "table-responsive mt-2">
                   <table class="table table-bordered">
                     <tr>
@@ -167,7 +176,7 @@
                       <td>Action</td>
                     </tr>
       
-                    <tr *ngFor="let object of expenses | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
+                    <tr *ngFor="let object of expenses | paginate: { itemsPerPage: objectPerPage, currentPage: p }; let i = index;">
                       <td> {{ i + 1 }} </td>
                       <td> <a routerLink="/dashboard/{{object.expense.transaction_type}}/{{ object.expense.category.split(' ')[0]  + '/' + object.expense.datetime }}"> <span class="span_amount">{{ object.expense.amount | number}}</span></a> TK</td>
 

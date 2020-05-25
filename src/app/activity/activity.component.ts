@@ -25,6 +25,7 @@ export class ActivityComponent implements OnInit {
   event:any = [];
   activityList: any;
   p: number = 1;
+  objectPerPage:number = 10;
 
   activity:Activity = {
     date: {year: new Date().getFullYear(), month: new Date().getMonth() + 1, day: new Date().getDate()},
@@ -77,5 +78,10 @@ removeObject(id:any) {
             });
      }
   }
+
+getPerPage(item) {
+
+}
+
 
 }

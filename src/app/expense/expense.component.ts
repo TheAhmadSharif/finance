@@ -86,6 +86,7 @@ export class ExpenseComponent implements OnInit {
   }
   isCollapsed:boolean = true;
   expenseCollapse:boolean = true;
+  objectPerPage:number = 10;
 
   expense:Expense = {
     amount: '',
@@ -347,6 +348,9 @@ getByRange(range:any) {
             });
         });
       }
+}
+getPerPage(item) {
+
 }
 
 }

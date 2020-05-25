@@ -68,6 +68,7 @@ export class CategoryComponent implements OnInit {
     }
   }
   isCollapsed:boolean = true;
+  objectPerPage:number = 10;
 
 constructor( private route: ActivatedRoute,
     private firestore: AngularFirestore) { 
@@ -164,6 +165,9 @@ getByRange(range:any) {
             });
         });
       }
+}
+getPerPage(object) {
+  
 }
   
 }

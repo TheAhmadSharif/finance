@@ -88,6 +88,7 @@ export class DepositComponent implements OnInit {
   }
   isCollapsed:boolean = true;
   depositCollapse:boolean = true;
+  objectPerPage:number = 10;
 
 
   deposit:Deposit = {
@@ -359,5 +360,8 @@ removeObject(object:any) {
   } 
 }
 /* End Remove */
+  getPerPage(item) {
+
+  }
 
 }

@@ -143,10 +143,20 @@
                             </div> <!-- End Col 6 -->
                             </div>  <!-- End collapse -->
                         </div>  <!-- End d-flex -->
-                  </div> <!-- End row -->
+                    </div> <!-- End row -->
                   </div>  <!-- End row -->
   
                 <div *ngIf="deposits">
+                        <div class="d-flex justify-content-end">
+                              <select [(ngModel)]="objectPerPage" (click)="getPerPage(objectPerPage)">
+                                  <option value="2">2</option>
+                                  <option value="5" selected>5</option>
+                                  <option value="10">10</option>
+                                  <option value="20">20</option>
+                                  <option value="50">50</option>
+                              </select>
+                        </div> <!-- End D Flex -->
+                  
                   <table class="table table-bordered">
                     <tr>
                       <td>#Serial</td>
@@ -164,7 +174,7 @@
                       <td>Action</td>
                     </tr>
       
-                    <tr *ngFor="let object of deposits | paginate: { itemsPerPage: 10, currentPage: p }; let i = index;">
+                    <tr *ngFor="let object of deposits | paginate: { itemsPerPage: objectPerPage, currentPage: p }; let i = index;">
                       <td> {{ i + 1 }} </td>
                       
                       <td> <a routerLink="/dashboard/{{object.deposit.transaction_type}}/{{ object.deposit.category.split(' ')[0]  + '/' + object.deposit.datetime }}"><span class="span_amount">{{ object.deposit.amount | number }}</span> </a> TK</td>
