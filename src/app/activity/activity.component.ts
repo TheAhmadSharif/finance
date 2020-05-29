@@ -39,6 +39,12 @@ export class ActivityComponent implements OnInit {
   ngOnInit(): void {
        this.firestore.collection('PersonalActivity').valueChanges().subscribe(object=> {
          this.activityList = object;
+
+         var sortByDate = _.sortBy(this.activityList, [function(o) { return o.activity_date_ms}]);
+
+         this.activityList = sortByDate;
+
+         
     }, error => {
 
     });
@@ -48,18 +54,28 @@ export class ActivityComponent implements OnInit {
 
       var date_ISO = this.activity.date.year + '-' + this.activity.date.month + '-' + this.activity.date.day;
       var creation_time = new Date().getTime().toString();
-      var AD_toDateString = new Date(date_ISO).toDateString();
+      var activity_date_string = new Date(date_ISO).toDateString();
       var activityList = this.activity.list = this.event; 
       var visibility = this.activity.visibility;
+      var activity_date_ms = new Date(date_ISO).getTime(); 
+
+
 
       // throw new Error("Hi");
       this.firestore.collection('PersonalActivity').doc(creation_time).set({
             _id: creation_time,
             activity_date: date_ISO,
-            AD_toDateString: AD_toDateString,
+            activity_date_string: activity_date_string,
+            activity_date_ms: activity_date_ms,
             activity_list: activityList,
             visibility: visibility
+      }).then(response => {
+
+        console.log(response);
+        this.event = [];
+        this.activity.list = [];
       });
+      
   }
   listActivity(object) {
     this.event.push(object);

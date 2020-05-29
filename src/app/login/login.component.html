@@ -17,7 +17,7 @@
 
                               <div class="d-flex justify-content-between">
                               <div class="align-self-start">
-                                  <button type="submit" class="btn btn-sm btn-success" (click)="doDogin(email.value, password.value)">Signin</button>
+                                  <button type="submit" class="btn btn-sm btn-success" (click)="doDogin(email.value, password.value)" (keyup.enter)="doDogin(email.value, password.value)">Signin</button>
                               </div>  <!-- End -->
 
                               

@@ -80,12 +80,12 @@
 </div> <!-- End row -->
 
 <div *ngIf="activityList" class="row mb-4">
-  <div *ngFor="let object of activityList | paginate: { itemsPerPage: objectPerPage, currentPage: p }; let i = index;" class="col-sm-3 col-12">
+  <div *ngFor="let object of activityList | paginate: { itemsPerPage: objectPerPage, currentPage: p }; let i = index;" class="col-sm-3 col-12 my-1">
     <div class="card">
       <div class="card-body">
           <div class="d-flex justify-content-between">
              <div>
-               Date: {{ object.AD_toDateString }}
+               Date: {{ object.activity_date_string }}
              </div>  <!-- End Date -->
              <span class="remove-span" data-tooltip="Remove Activity" data-position="top center" data-variation="mini">
                  <i class="window close outline icon cp m-0" (click)="removeObject(object._id)"></i> 
