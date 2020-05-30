@@ -28,6 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { NopageComponent } from './nopage/nopage.component';
 import { ContactComponent } from './contact/contact.component';
 import { ActivityComponent } from './activity/activity.component';
+import { DueBillComponent } from './due-bill/due-bill.component';
+import { LoanComponent } from './loan/loan.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ActivityComponent } from './activity/activity.component';
     DashboardComponent,
     NopageComponent,
     ContactComponent,
-    ActivityComponent
+    ActivityComponent,
+    DueBillComponent,
+    LoanComponent
   ],
   imports: [
     BrowserModule,

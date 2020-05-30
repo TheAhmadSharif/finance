@@ -10,6 +10,15 @@
                         <i class="clone outline icon" style="color: #6c757d;"></i> 
                         <a routerLink="/dashboard/home" routerLinkActive="active">Home</a>
                     </li>
+                    <li>
+                        <i class="calculator icon" style="color: #6c757d;"></i>
+                        <span class="cp" (click)="switchCalculator()"
+                        [attr.aria-expanded]="!isCollapsed" aria-controls="calculator" style="color: #666">Calculator</span>
+                    </li>
+                    <li>
+                        <i class="tasks icon" style="color: #6c757d;"></i>
+                        <a routerLink="/dashboard/activity" routerLinkActive="active">Activity</a>
+                    </li>
                     
                     <li>
                         <i class="dollar sign icon" style="color: #6c757d;"></i>
@@ -20,21 +29,11 @@
                         <a routerLink="/dashboard/expense" routerLinkActive="active">Expense</a>
                     </li>
                     <li>
-                        <i class="calculator icon" style="color: #6c757d;"></i>
-                        <span class="cp" (click)="switchCalculator()"
-                        [attr.aria-expanded]="!isCollapsed" aria-controls="calculator" style="color: #666">Calculator</span>
-                    </li>
-
-                    <li>
-                        <i class="tasks icon" style="color: #6c757d;"></i>
-                        <a routerLink="/dashboard/activity" routerLinkActive="active">Activity</a>
-                    </li>
-
-                    
-                    <li>
                         <i class="chart bar icon" style="color: #6c757d;"></i> 
                         <a routerLink="/dashboard/report" routerLinkActive="active">Report</a>
                     </li>
+
+                    
                     <li>
                         <i class="sign-out icon" style="color: #6c757d;"></i> 
                         <a routerLink="/" routerLinkActive="active" (click)="doLogout()">Logout</a>
